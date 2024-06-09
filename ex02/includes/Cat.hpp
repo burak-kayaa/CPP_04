@@ -13,8 +13,10 @@ class Cat : public Animal
 		Cat(std::string name);
 		Cat(const Cat &Cat);
 		Cat		&operator=(const Cat &Cat);
-		virtual	~Cat();
-		void	makeSound() const;
+		virtual		~Cat();
+		void		makeSound() const;
+		void		setIdea(std::string idea, int index);
+		void		getIdea(int index) const;
 };
 
 #endif

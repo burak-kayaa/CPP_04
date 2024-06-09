@@ -15,6 +15,8 @@ class WrongCat : public WrongAnimal
 		WrongCat	&operator=(const WrongCat &wrongcat);
 		virtual		~WrongCat();
 		void		makeSound() const;
+		void		setIdea(std::string idea, int index);
+		void		getIdea(int index) const;
 };
 
 #endif

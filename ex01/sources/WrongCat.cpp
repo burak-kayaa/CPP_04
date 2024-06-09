@@ -3,12 +3,18 @@
 WrongCat::WrongCat() : WrongAnimal("WrongCat")
 {
 	this->brain = new Brain();
+	int	i = -1;
+	while (++i < 100)
+		this->brain->setIdea("I am a wrong cat", i);
 	std::cout << "WrongCat constructor called" << std::endl;
 }
 
 WrongCat::WrongCat(std::string type) : WrongAnimal(type)
 {
 	this->brain = new Brain();
+	int	i = -1;
+	while (++i < 100)
+		this->brain->setIdea("I am a wrong cat", i);
 	std::cout << "WrongCat constructor called" << std::endl;
 }
 
@@ -34,4 +40,14 @@ WrongCat::~WrongCat()
 void	WrongCat::makeSound() const
 {
 	std::cout << "WrongCat sound" << std::endl;
+}
+
+void	WrongCat::setIdea(std::string idea, int index)
+{
+	this->brain->setIdea(idea, index);
+}
+
+void	WrongCat::getIdea(int index) const
+{
+	std::cout << this->brain->getIdea(index) << std::endl;
 }

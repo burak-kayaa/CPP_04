@@ -15,9 +15,17 @@ int main()
 	}
 	i = -1;
 	while (++i < 10)
+	{
 		animals[i]->makeSound();
+	}
 	i = -1;
 	while (++i < 10)
 		delete animals[i];
+	Cat	*cat = new Cat();
+	cat->makeSound();
+	cat->getIdea(0);
+	cat->setIdea("Ben atim", 0);
+	cat->getIdea(0);
+	delete cat;
 	return (0);
 }

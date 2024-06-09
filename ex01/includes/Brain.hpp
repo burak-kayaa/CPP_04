@@ -13,8 +13,8 @@ class Brain
 		Brain(const Brain &copy);
 		Brain &operator=(const Brain &copy);
 		~Brain();
-		void setIdea(std::string idea, int index);
-		std::string getIdea(int index) const;
+		void	setIdea(std::string idea, int index);
+		std::string	getIdea(int index) const;
 };
 
 #endif
