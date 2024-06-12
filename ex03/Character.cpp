@@ -28,13 +28,23 @@ Character::~Character()
 
 Character	&Character::operator=(Character const &src)
 {
-
+	if (!this->_name.empty())
+	{
+		for (int i = 0; i < 4; i++)
+		{
+			if (this->_materias[i])
+				delete this->_materias[i];
+		}
+	}
+	else
+	{
+		for (int i = 0; i < 4; i++)
+			this->_materias[i] = NULL;
+	}
 	if (this != &src)
 	{
 		for (int i = 0; i < 4; i++)
 		{
-			if (!this->_name.empty() && this->_materias[i])
-				delete this->_materias[i];
 			if (src._materias[i])
 				this->_materias[i] = src._materias[i]->clone();
 		}
@@ -54,7 +64,6 @@ void Character::equip(AMateria* m)
 		return;
 	for (int i = 0; i < 4; i++)
 	{
-		std::cout << "materias[" << i << "] = " << _materias[i] << std::endl;
 		if (!_materias[i])
 		{
 			_materias[i] = m;
@@ -65,12 +74,20 @@ void Character::equip(AMateria* m)
 
 void Character::unequip(int idx)
 {
+	AMateria *tmp;
+
+	tmp = NULL;
 	if (idx >= 0 && idx < 4)
+	{
+		tmp = _materias[idx];
+		if (tmp)
+			std::cout << "unequip " << tmp->getType() << std::endl;
 		_materias[idx] = NULL;
+	}
 }
 
 void Character::use(int idx, ICharacter &target)
 {
-	if (idx >= 0 && idx < 4 && _materias[idx])
+	if (idx >= 0 && idx < 4 && _materias[idx] != NULL)
 		_materias[idx]->use(target);
 }
